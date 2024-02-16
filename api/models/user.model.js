@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        // mn: 3,
+        // min: 3,
         // max: 20,
         unique: true
     },
