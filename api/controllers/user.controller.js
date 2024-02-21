@@ -1,3 +1,3 @@
 export const test = (req, res) => {
-    res.json({ message: 'API is working perfectly'})
-}
+    res.json({ message: "API is working perfectly my dear" });
+};
