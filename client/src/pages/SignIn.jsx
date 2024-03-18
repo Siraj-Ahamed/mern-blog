@@ -12,7 +12,7 @@ export default function SignIn() {
     const [formData, setFormData] = useState({});
     // const [errorMessage, setErrorMessage] = useState(null);
     // const [loading, setLoaoding] = useState(false);
-    const {loading, error: errorMessage} = useSelector(state => state.user)
+    const { loading, error: errorMessage } = useSelector((state) => state.user);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -24,7 +24,8 @@ export default function SignIn() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.email || !formData.password) {
-            return setErrorMessage("Please fill out all the fields!.");
+            // return setErrorMessage("Please fill out all the fields!.");
+            return dispatch(signInFailure("Please fill all the fields"));
         }
         console.log(formData);
         // console.log("handleSubmit works");
@@ -41,16 +42,16 @@ export default function SignIn() {
             if (data.success === false) {
                 // setLoaoding(false);
                 // return setErrorMessage(data.message);
-                dispatch(signInFailure(data.message))
+                dispatch(signInFailure(data.message));
             }
             if (res.ok) {
-                dispatch(signInSuccess(data))
+                dispatch(signInSuccess(data));
                 navigate("/");
             }
         } catch (error) {
             // setErrorMessage(error.message);
             // setLoaoding(false);
-            dispatch(signInFailure(error.message))
+            dispatch(signInFailure(error.message));
         }
     };
 
